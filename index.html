@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>PHP_Weather by Random-Host</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>PHP_Weather</h1>
+        <p>Encapsulates SimpleXML functions for easy retrieval of weather data from the Yahoo Weather API.</p>
+
+        <p class="view"><a href="https://github.com/Random-Host/PHP_Weather">View the Project on GitHub <small>Random-Host/PHP_Weather</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Random-Host/PHP_Weather/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Random-Host/PHP_Weather/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Random-Host/PHP_Weather">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>This package encapsulates SimpleXML functions for easy retrieval of weather data
+from the <a href="http://developer.yahoo.com/weather/">Yahoo Weather API</a>. It
+was created as part of the PHP_Webcam_Overlay package but is released as a
+separate component so it can be used in other packages.</p>
+
+<p>Because it was created as a dependency of the PHP_Webcam_Overlay package, it
+does only support a subset of the available weather data.</p>
+
+<h2>
+<a name="system-wide-installation" class="anchor" href="#system-wide-installation"><span class="octicon octicon-link"></span></a>System-Wide Installation</h2>
+
+<p>PHP_Weather should be installed using the <a href="http://pear.php.net">PEAR Installer</a>.
+This installer is the PHP community's de-facto standard for installing PHP
+components.</p>
+
+<pre><code>sudo pear channel-discover pear.random-host.com
+sudo pear install --alldeps randomhost/PHP_Weather
+</code></pre>
+
+<h2>
+<a name="as-a-dependency-on-your-component" class="anchor" href="#as-a-dependency-on-your-component"><span class="octicon octicon-link"></span></a>As A Dependency On Your Component</h2>
+
+<p>If you are creating a component that relies on PHP_Weather, please make sure that
+you add PHP_Weather to your component's package.xml file:</p>
+
+<div class="highlight highlight-xml"><pre><span class="nt">&lt;dependencies&gt;</span>
+  <span class="nt">&lt;required&gt;</span>
+    <span class="nt">&lt;package&gt;</span>
+      <span class="nt">&lt;name&gt;</span>PHP_Weather<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;channel&gt;</span>pear.random-host.com<span class="nt">&lt;/channel&gt;</span>
+      <span class="nt">&lt;min&gt;</span>1.0.0<span class="nt">&lt;/min&gt;</span>
+      <span class="nt">&lt;max&gt;</span>1.999.9999<span class="nt">&lt;/max&gt;</span>
+    <span class="nt">&lt;/package&gt;</span>
+  <span class="nt">&lt;/required&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</pre></div>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>A basic approach at using this package could look like this:</p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">randomhost\Weather</span><span class="p">;</span>
+
+<span class="k">require</span> <span class="s1">'psr0.autoloader.php'</span><span class="p">;</span>
+
+<span class="c1">// get Yahoo Weather API Feed instance</span>
+<span class="nv">$feed</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Yahoo\Feed</span><span class="p">(</span><span class="mi">667931</span><span class="p">,</span> <span class="nx">Yahoo\Feed</span><span class="o">::</span><span class="na">UNITS_INTL</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span>
+    <span class="s1">'Temperature: %s°%s, Humidity: %s%%'</span><span class="p">,</span>
+    <span class="nv">$feed</span><span class="o">-&gt;</span><span class="na">getCondition</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getTemperature</span><span class="p">(),</span>
+    <span class="nv">$feed</span><span class="o">-&gt;</span><span class="na">getUnits</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getTemperature</span><span class="p">(),</span>
+    <span class="nv">$feed</span><span class="o">-&gt;</span><span class="na">getAtmosphere</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getHumidity</span><span class="p">()</span>
+<span class="p">);</span>
+</pre></div>
+
+<p>This will instantiate the class, fetch the weather data and display current
+temperature and humidity.</p>
+
+<p>Assuming that you named this file <code>weather.php</code>, you should now be able to
+access the weather data at <code>http://example.com/weather.php</code></p>
+
+<p>A more detailed example can be found in <code>src/www/weather/index.php</code> which will
+also be installed to your PEAR www directory (usually <code>/usr/share/php/htdocs</code>).</p>
+
+<h2>
+<a name="development-environment" class="anchor" href="#development-environment"><span class="octicon octicon-link"></span></a>Development Environment</h2>
+
+<p>If you want to patch or enhance this component, you will need to create a
+suitable development environment. The easiest way to do that is to install
+phix4componentdev:</p>
+
+<pre><code># phix4componentdev
+sudo apt-get install php5-xdebug
+sudo apt-get install php5-imagick
+sudo pear channel-discover pear.phix-project.org
+sudo pear -D auto_discover=1 install -Ba phix/phix4componentdev
+</code></pre>
+
+<p>You can then clone the git repository:</p>
+
+<pre><code># PHP_Webcam_Overlay
+git clone https://github.com/Random-Host/PHP_Weather.git
+</code></pre>
+
+<p>Then, install a local copy of this component's dependencies to complete the
+development environment:</p>
+
+<pre><code># build vendor/ folder
+phing build-vendor
+</code></pre>
+
+<p>To make life easier for you, common tasks (such as running unit tests,
+generating code review analytics, and creating the PEAR package) have been
+automated using <a href="http://phing.info">phing</a>.  You'll find the automated steps
+inside the build.xml file that ships with the component.</p>
+
+<p>Run the command 'phing' in the component's top-level folder to see the full list
+of available automated tasks.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>See LICENSE.txt for full license details.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Random-Host">Random-Host</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
