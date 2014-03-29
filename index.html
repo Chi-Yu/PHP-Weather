@@ -18,8 +18,6 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/Random-Host/PHP_Weather">View on GitHub</a>
 
-          <img id="project_logo" src="images/phpweather.png">
-            
           <h1 id="project_title">PHP_Weather</h1>
           <h2 id="project_tagline">Encapsulates SimpleXML functions for easy retrieval of weather data from the Yahoo Weather API.</h2>
 
@@ -97,13 +95,16 @@ It provides all methods required for retrieving data from the Yahoo! Weather API
 <p>The constructor takes 3 parameters which are all optional:</p>
 
 <ul>
-<li><p><code>$locationId</code><br>
-Location ID (WOEID) for retrieving weather data from the Yahoo Weather API.</p></li>
-<li><p><code>$systemOfUnits</code><br>
+<li>
+<code>$locationId</code><br>
+Location ID (WOEID) for retrieving weather data from the Yahoo Weather API.</li>
+<li>
+<code>$systemOfUnits</code><br>
 System of units to be returned by the feed. This must be either <code>Feed::UNITS_INTL</code>
-or <code>Feed::UNITS_US</code>.</p></li>
-<li><p><code>$feedUrl</code><br>
-Feed URL for retrieving weather data from Yahoo Weather API.</p></li>
+or <code>Feed::UNITS_US</code>.</li>
+<li>
+<code>$feedUrl</code><br>
+Feed URL for retrieving weather data from Yahoo Weather API.</li>
 </ul><p>If a <code>$locationId</code> is given, <code>Feed::fetchData()</code> will be called implicitly which
 will automatically retrieve weather data for the given location ID and populate
 the data access objects accordingly.<br>
@@ -124,46 +125,60 @@ changes their API.</p>
 <p>The following public methods for configuring the weather feed are available:</p>
 
 <ul>
-<li><p><code>setFeedUrl($feedUrl)</code><br>
-Sets the feed URL for retrieving weather data from the Yahoo! Weather API.</p></li>
-<li><p><code>getFeedUrl()</code><br>
-Returns the last set weather API feed URL.</p></li>
-<li><p><code>setLocationId($id)</code><br>
-Sets the location ID (WOEID) for retrieving weather data from Yahoo Weather API.</p></li>
-<li><p><code>getLocationId()</code><br>
-Returns the last set location ID for retrieving weather data.</p></li>
-<li><p><code>setSystemOfUnits($systemOfUnits)</code><br>
-Sets the system of units to be returned by the feed.</p></li>
-<li><p><code>getSystemOfUnits()</code><br>
-Returns the last set system of units.</p></li>
+<li>
+<code>setFeedUrl($feedUrl)</code><br>
+Sets the feed URL for retrieving weather data from the Yahoo! Weather API.</li>
+<li>
+<code>getFeedUrl()</code><br>
+Returns the last set weather API feed URL.</li>
+<li>
+<code>setLocationId($id)</code><br>
+Sets the location ID (WOEID) for retrieving weather data from Yahoo Weather API.</li>
+<li>
+<code>getLocationId()</code><br>
+Returns the last set location ID for retrieving weather data.</li>
+<li>
+<code>setSystemOfUnits($systemOfUnits)</code><br>
+Sets the system of units to be returned by the feed.</li>
+<li>
+<code>getSystemOfUnits()</code><br>
+Returns the last set system of units.</li>
 </ul><h4>
 <a name="retrieving-data-from-the-feed" class="anchor" href="#retrieving-data-from-the-feed"><span class="octicon octicon-link"></span></a>Retrieving data from the feed</h4>
 
 <p>The following public methods for retrieving data from the feed are available:</p>
 
 <ul>
-<li><p><code>fetchData()</code><br>
+<li>
+<code>fetchData()</code><br>
 Fetches weather data from the Yahoo Weather API and populates the data access
 objects accordingly.<br>
 This method must be called at least once before using any
-of the methods listed below.</p></li>
-<li><p><code>getLocation()</code><br>
-Returns a <code>Data\Location</code> object holding the location of this forecast.</p></li>
-<li><p><code>getUnits()</code><br>
-Returns a <code>Data\Units</code> object holding units for various aspects of the forecast.</p></li>
-<li><p><code>getWind()</code><br>
-Returns a <code>Data\Wind</code> object holding forecast information about wind.</p></li>
-<li><p><code>getAtmosphere()</code><br>
+of the methods listed below.</li>
+<li>
+<code>getLocation()</code><br>
+Returns a <code>Data\Location</code> object holding the location of this forecast.</li>
+<li>
+<code>getUnits()</code><br>
+Returns a <code>Data\Units</code> object holding units for various aspects of the forecast.</li>
+<li>
+<code>getWind()</code><br>
+Returns a <code>Data\Wind</code> object holding forecast information about wind.</li>
+<li>
+<code>getAtmosphere()</code><br>
 Returns a <code>Data\Atmosphere</code> object holding forecast information about current
-atmospheric pressure, humidity, and visibility.</p></li>
-<li><p><code>getAstronomy()</code><br>
+atmospheric pressure, humidity, and visibility.</li>
+<li>
+<code>getAstronomy()</code><br>
 Returns a <code>Data\Astronomy</code> object holding forecast information about current
-astronomical conditions.</p></li>
-<li><p><code>getCondition()</code><br>
-Returns a <code>Data\Condition</code> object holding the current weather conditions.</p></li>
-<li><p><code>getForecast()</code><br>
+astronomical conditions.</li>
+<li>
+<code>getCondition()</code><br>
+Returns a <code>Data\Condition</code> object holding the current weather conditions.</li>
+<li>
+<code>getForecast()</code><br>
 Returns an array of <code>Data\Forecast</code> objects holding the weather forecast for a
-specific day.</p></li>
+specific day.</li>
 </ul><h3>
 <a name="the-datalocation-object" class="anchor" href="#the-datalocation-object"><span class="octicon octicon-link"></span></a>The Data\Location object</h3>
 
@@ -172,12 +187,15 @@ specific day.</p></li>
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li><p><code>getCity()</code><br>
-Returns the city name. (string)</p></li>
-<li><p><code>getRegion()</code><br>
-Returns the state, territory, or region. (string)</p></li>
-<li><p><code>getCountry()</code><br>
-Returns the country name. (string)</p></li>
+<li>
+<code>getCity()</code><br>
+Returns the city name. (string)</li>
+<li>
+<code>getRegion()</code><br>
+Returns the state, territory, or region. (string)</li>
+<li>
+<code>getCountry()</code><br>
+Returns the country name. (string)</li>
 </ul><h3>
 <a name="the-dataunits-object" class="anchor" href="#the-dataunits-object"><span class="octicon octicon-link"></span></a>The Data\Units object</h3>
 
@@ -186,14 +204,18 @@ Returns the country name. (string)</p></li>
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li><p><code>getTemperature()</code><br>
-Returns the degree units for temperature. (string)</p></li>
-<li><p><code>getDistance()</code><br>
-Returns the units for distance. (string)</p></li>
-<li><p><code>getPressure()</code><br>
-Returns the units of barometric pressure. (string)</p></li>
-<li><p><code>getSpeed()</code><br>
-Returns the units of speed. (string)</p></li>
+<li>
+<code>getTemperature()</code><br>
+Returns the degree units for temperature. (string)</li>
+<li>
+<code>getDistance()</code><br>
+Returns the units for distance. (string)</li>
+<li>
+<code>getPressure()</code><br>
+Returns the units of barometric pressure. (string)</li>
+<li>
+<code>getSpeed()</code><br>
+Returns the units of speed. (string)</li>
 </ul><h3>
 <a name="the-datawind-object" class="anchor" href="#the-datawind-object"><span class="octicon octicon-link"></span></a>The Data\Wind object</h3>
 
@@ -202,12 +224,15 @@ Returns the units of speed. (string)</p></li>
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li><p><code>getChill()</code><br>
-Returns the wind chill in degrees. (float)</p></li>
-<li><p><code>getDirection()</code><br>
-Returns the wind direction, in degrees. (float)</p></li>
-<li><p><code>getSpeed()</code><br>
-Returns the wind speed. (float)</p></li>
+<li>
+<code>getChill()</code><br>
+Returns the wind chill in degrees. (float)</li>
+<li>
+<code>getDirection()</code><br>
+Returns the wind direction, in degrees. (float)</li>
+<li>
+<code>getSpeed()</code><br>
+Returns the wind speed. (float)</li>
 </ul><h3>
 <a name="the-dataatmosphere-object" class="anchor" href="#the-dataatmosphere-object"><span class="octicon octicon-link"></span></a>The Data\Atmosphere object</h3>
 
@@ -217,14 +242,19 @@ atmospheric pressure, humidity, and visibility.</p>
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li><p><code>getHumidity()</code><br>
-Returns the humidity in percent. (float)</p></li>
-<li><p><code>getVisibility()</code><br>
-Returns the visibility. (float)</p></li>
-<li><p><code>getPressure()</code><br>
-Returns the barometric pressure. (float)</p></li>
-<li><p><code>getRising()</code><br>
-Returns the state of the barometric pressure: steady (0), rising (1), or falling (2). (int)  </p></li>
+<li>
+<code>getHumidity()</code><br>
+Returns the humidity in percent. (float)</li>
+<li>
+<code>getVisibility()</code><br>
+Returns the visibility. (float)</li>
+<li>
+<code>getPressure()</code><br>
+Returns the barometric pressure. (float)</li>
+<li>
+<code>getRising()</code><br>
+Returns the state of the barometric pressure: steady (0), rising (1), or falling (2). (int)<br>
+</li>
 </ul><h3>
 <a name="the-dataastronomy-object" class="anchor" href="#the-dataastronomy-object"><span class="octicon octicon-link"></span></a>The Data\Astronomy object</h3>
 
@@ -234,10 +264,12 @@ astronomical conditions.</p>
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li><p><code>getSunrise()</code><br>
-Returns today's sunrise time. (\DateTime)</p></li>
-<li><p><code>getSunset()</code><br>
-Returns today's sunset time. (\DateTime)</p></li>
+<li>
+<code>getSunrise()</code><br>
+Returns today's sunrise time. (\DateTime)</li>
+<li>
+<code>getSunset()</code><br>
+Returns today's sunset time. (\DateTime)</li>
 </ul><h3>
 <a name="the-datacondition-object" class="anchor" href="#the-datacondition-object"><span class="octicon octicon-link"></span></a>The Data\Condition object</h3>
 
@@ -246,17 +278,21 @@ Returns today's sunset time. (\DateTime)</p></li>
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li><p><code>getText()</code><br>
-Returns the textual description of conditions. (string)</p></li>
-<li><p><code>getCode()</code><br>
+<li>
+<code>getText()</code><br>
+Returns the textual description of conditions. (string)</li>
+<li>
+<code>getCode()</code><br>
 Returns the condition code for this forecast. You could use this code to choose
 a text description or image for the forecast.<br>
 The possible values for this element are described in
-<a href="http://developer.yahoo.com/weather/#codes">Condition Codes</a>. (int)</p></li>
-<li><p><code>getTemperature()</code><br>
-Returns the current temperature. (float)</p></li>
-<li><p><code>getDate()</code><br>
-Returns the current date and time for which this forecast applies. (\DateTime)</p></li>
+<a href="http://developer.yahoo.com/weather/#codes">Condition Codes</a>. (int)</li>
+<li>
+<code>getTemperature()</code><br>
+Returns the current temperature. (float)</li>
+<li>
+<code>getDate()</code><br>
+Returns the current date and time for which this forecast applies. (\DateTime)</li>
 </ul><h3>
 <a name="the-dataforecast-object" class="anchor" href="#the-dataforecast-object"><span class="octicon octicon-link"></span></a>The Data\Forecast object</h3>
 
@@ -265,19 +301,24 @@ Returns the current date and time for which this forecast applies. (\DateTime)</
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li><p><code>getDate()</code><br>
-Returns the date to which this forecast applies. (\DateTime)</p></li>
-<li><p><code>getLow()</code><br>
-Returns the forecasted low temperature for this day. (float)</p></li>
-<li><p><code>getHigh()</code><br>
-Returns the forecasted high temperature for this day. (float)</p></li>
-<li><p><code>getText()</code><br>
-Returns the textual description of conditions. (string)</p></li>
-<li><p><code>getCode()</code><br>
+<li>
+<code>getDate()</code><br>
+Returns the date to which this forecast applies. (\DateTime)</li>
+<li>
+<code>getLow()</code><br>
+Returns the forecasted low temperature for this day. (float)</li>
+<li>
+<code>getHigh()</code><br>
+Returns the forecasted high temperature for this day. (float)</li>
+<li>
+<code>getText()</code><br>
+Returns the textual description of conditions. (string)</li>
+<li>
+<code>getCode()</code><br>
 Returns the condition code for this forecast. You could use this code to choose
 a text description or image for the forecast.<br>
 The possible values for this element are described in
-<a href="http://developer.yahoo.com/weather/#codes">Condition Codes</a>. (int)</p></li>
+<a href="http://developer.yahoo.com/weather/#codes">Condition Codes</a>. (int)</li>
 </ul><h2>
 <a name="finding-your-woeid" class="anchor" href="#finding-your-woeid"><span class="octicon octicon-link"></span></a>Finding your WOEID</h2>
 
