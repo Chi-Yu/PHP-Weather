@@ -2,14 +2,13 @@
 <html>
 
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="PHP_Weather : Encapsulates SimpleXML functions for easy retrieval of weather data from the Yahoo Weather API." />
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="randomhost/weather : Encapsulates functions for easy retrieval of weather data from the Yahoo Weather API.">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/custom.css">
 
-    <title>PHP_Weather</title>
+    <title>randomhost/weather</title>
   </head>
 
   <body>
@@ -17,16 +16,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/Random-Host/PHP_Weather">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/randomhost/weather">View on GitHub</a>
 
-          <img id="project_logo" src="images/phpweather.png">
-
-          <h1 id="project_title">PHP_Weather</h1>
-          <h2 id="project_tagline">Encapsulates SimpleXML functions for easy retrieval of weather data from the Yahoo Weather API.</h2>
+          <h1 id="project_title">randomhost/weather</h1>
+          <h2 id="project_tagline">Encapsulates functions for easy retrieval of weather data from the Yahoo Weather API.</h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/Random-Host/PHP_Weather/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/Random-Host/PHP_Weather/tarball/master">Download this project as a tar.gz file</a>
+              <a class="zip_download_link" href="https://github.com/randomhost/weather/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/randomhost/weather/tarball/master">Download this project as a tar.gz file</a>
             </section>
         </header>
     </div>
@@ -34,50 +31,37 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p><a href="https://travis-ci.org/Random-Host/PHP_Weather"><img src="https://travis-ci.org/Random-Host/PHP_Weather.svg" alt="Build Status"></a></p>
+        <p><a href="https://travis-ci.org/randomhost/weather"><img src="https://travis-ci.org/randomhost/weather.svg?branch=master" alt="Build Status"></a></p>
+
+<h1>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h1>
+
+<p>This package encapsulates functions for easy retrieval of weather data from the
+<a href="http://developer.yahoo.com/weather/">Yahoo Weather API</a>. It was created as part of <code>randomhost/webcamoverlay</code>
+but is released as a separate component so it can be used in other packages.</p>
+
+<p>Because it was created as a dependency of <code>randomhost/webcamoverlay</code>, it does
+only support a subset of the available weather data.</p>
 
 <h2>
-<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
-
-<p>This package encapsulates SimpleXML functions for easy retrieval of weather data
-from the <a href="http://developer.yahoo.com/weather/">Yahoo Weather API</a>. It
-was created as part of the PHP_Webcam_Overlay package but is released as a
-separate component so it can be used in other packages.</p>
-
-<p>Because it was created as a dependency of the PHP_Webcam_Overlay package, it
-does only support a subset of the available weather data.</p>
-
-<h2>
-<a name="system-wide-installation" class="anchor" href="#system-wide-installation"><span class="octicon octicon-link"></span></a>System-Wide Installation</h2>
-
-<p>PHP_Weather should be installed using the <a href="http://pear.php.net">PEAR Installer</a>.
-This installer is the PHP community's de-facto standard for installing PHP
-components.</p>
-
-<pre><code>sudo pear channel-discover pear.random-host.com
-sudo pear install --alldeps randomhost/PHP_Weather
-</code></pre>
-
-<h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>A basic approach at using this package could look like this:</p>
 
-<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">namespace</span> <span class="nx">randomhost\Weather</span><span class="p">;</span>
-
-<span class="k">require</span> <span class="s1">'psr0.autoloader.php'</span><span class="p">;</span>
-
-<span class="c1">// get Yahoo Weather API Feed instance</span>
-<span class="nv">$feed</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Yahoo\Feed</span><span class="p">(</span><span class="mi">667931</span><span class="p">,</span> <span class="nx">Yahoo\Feed</span><span class="o">::</span><span class="na">UNITS_INTL</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="nb">sprintf</span><span class="p">(</span>
-    <span class="s1">'Temperature: %s°%s, Humidity: %s%%'</span><span class="p">,</span>
-    <span class="nv">$feed</span><span class="o">-&gt;</span><span class="na">getCondition</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getTemperature</span><span class="p">(),</span>
-    <span class="nv">$feed</span><span class="o">-&gt;</span><span class="na">getUnits</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getTemperature</span><span class="p">(),</span>
-    <span class="nv">$feed</span><span class="o">-&gt;</span><span class="na">getAtmosphere</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getHumidity</span><span class="p">()</span>
-<span class="p">);</span>
-</pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">namespace</span> <span class="pl-en">randomhost\Weather</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">require_once</span> <span class="pl-s"><span class="pl-pds">'</span>/path/to/vendor/autoload.php<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// get Yahoo Weather API Feed instance</span></span>
+<span class="pl-s1"><span class="pl-smi">$feed</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Yahoo\</span><span class="pl-c1">Feed</span>(<span class="pl-s"><span class="pl-pds">'</span>Cologne<span class="pl-pds">'</span></span>, <span class="pl-c1">Yahoo\</span><span class="pl-c1">Feed</span><span class="pl-k">::</span><span class="pl-c1">UNITS_INTL</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-c1">sprintf</span>(</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>Temperature: %s°%s, Humidity: %s%%<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">    <span class="pl-smi">$feed</span><span class="pl-k">-&gt;</span>getCondition()<span class="pl-k">-&gt;</span>getTemperature(),</span>
+<span class="pl-s1">    <span class="pl-smi">$feed</span><span class="pl-k">-&gt;</span>getUnits()<span class="pl-k">-&gt;</span>getTemperature(),</span>
+<span class="pl-s1">    <span class="pl-smi">$feed</span><span class="pl-k">-&gt;</span>getAtmosphere()<span class="pl-k">-&gt;</span>getHumidity()</span>
+<span class="pl-s1">);</span></pre></div>
 
 <p>This will instantiate the class, fetch the weather data and display current
 temperature and humidity.</p>
@@ -89,32 +73,31 @@ access the weather data at <code>http://example.com/weather.php</code></p>
 also be installed to your PEAR www directory (usually <code>/usr/share/php/htdocs</code>).</p>
 
 <h3>
-<a name="the-feed-object" class="anchor" href="#the-feed-object"><span class="octicon octicon-link"></span></a>The Feed object</h3>
+<a id="the-feed-object" class="anchor" href="#the-feed-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Feed object</h3>
 
 <p>The <code>Feed</code> object is the primary object you will interact with in your application.
 It provides all methods required for retrieving data from the Yahoo! Weather API.</p>
 
 <h4>
-<a name="constructor" class="anchor" href="#constructor"><span class="octicon octicon-link"></span></a>Constructor</h4>
+<a id="constructor" class="anchor" href="#constructor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Constructor</h4>
 
 <p>The constructor takes 3 parameters which are all optional:</p>
 
 <ul>
-<li>
-<code>$locationId</code><br>
-Location ID (WOEID) for retrieving weather data from the Yahoo Weather API.</li>
-<li>
-<code>$systemOfUnits</code><br>
+<li><p><code>$locationName</code><br>
+Location name for retrieving weather data from the Yahoo Weather API.</p></li>
+<li><p><code>$systemOfUnits</code><br>
 System of units to be returned by the feed. This must be either <code>Feed::UNITS_INTL</code>
-or <code>Feed::UNITS_US</code>.</li>
-<li>
-<code>$feedUrl</code><br>
-Feed URL for retrieving weather data from Yahoo Weather API.</li>
-</ul><p>If a <code>$locationId</code> is given, <code>Feed::fetchData()</code> will be called implicitly which
-will automatically retrieve weather data for the given location ID and populate
-the data access objects accordingly.<br>
-If you do not want this, you can omit <code>$locationId</code> or set it to <code>0</code> and configure
-the location ID yourself using <code>Feed::setLocationId()</code>.</p>
+or <code>Feed::UNITS_US</code>.</p></li>
+<li><p><code>$feedUrl</code><br>
+Feed URL for retrieving weather data from Yahoo Weather API.</p></li>
+</ul>
+
+<p>If a <code>$locationName</code> is given, <code>Feed::fetchData()</code> will be called implicitly
+which will automatically retrieve weather data for the given location ID and
+populate the data access objects accordingly.<br>
+If you do not want this, you can omit <code>$locationName</code> or set it to `<code>(empty
+string) and configure the location name yourself using</code>Feed::setLocationName()`.</p>
 
 <p>The <code>$systemOfUnits</code> parameter can be used to determine the system of units to
 be used by the weather feed. If not given or set to <code>''</code> (an empty string), it
@@ -125,121 +108,107 @@ Weather API. This parameter does not usually need to be changed unless Yahoo!
 changes their API.</p>
 
 <h4>
-<a name="configuring-the-feed" class="anchor" href="#configuring-the-feed"><span class="octicon octicon-link"></span></a>Configuring the feed</h4>
+<a id="configuring-the-feed" class="anchor" href="#configuring-the-feed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuring the feed</h4>
 
 <p>The following public methods for configuring the weather feed are available:</p>
 
 <ul>
-<li>
-<code>setFeedUrl($feedUrl)</code><br>
-Sets the feed URL for retrieving weather data from the Yahoo! Weather API.</li>
-<li>
-<code>getFeedUrl()</code><br>
-Returns the last set weather API feed URL.</li>
-<li>
-<code>setLocationId($id)</code><br>
-Sets the location ID (WOEID) for retrieving weather data from Yahoo Weather API.</li>
-<li>
-<code>getLocationId()</code><br>
-Returns the last set location ID for retrieving weather data.</li>
-<li>
-<code>setSystemOfUnits($systemOfUnits)</code><br>
-Sets the system of units to be returned by the feed.</li>
-<li>
-<code>getSystemOfUnits()</code><br>
-Returns the last set system of units.</li>
-</ul><h4>
-<a name="retrieving-data-from-the-feed" class="anchor" href="#retrieving-data-from-the-feed"><span class="octicon octicon-link"></span></a>Retrieving data from the feed</h4>
+<li><p><code>setFeedUrl($feedUrl)</code><br>
+Sets the feed URL for retrieving weather data from the Yahoo! Weather API.</p></li>
+<li><p><code>getFeedUrl()</code><br>
+Returns the last set weather API feed URL.</p></li>
+<li><p><code>setLocationName($name)</code><br>
+Sets the location name for retrieving weather data from Yahoo Weather API.</p></li>
+<li><p><code>getLocationName()</code><br>
+Returns the last set location name for retrieving weather data.</p></li>
+<li><p><code>setSystemOfUnits($systemOfUnits)</code><br>
+Sets the system of units to be returned by the feed.</p></li>
+<li><p><code>getSystemOfUnits()</code><br>
+Returns the last set system of units.</p></li>
+</ul>
+
+<h4>
+<a id="retrieving-data-from-the-feed" class="anchor" href="#retrieving-data-from-the-feed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Retrieving data from the feed</h4>
 
 <p>The following public methods for retrieving data from the feed are available:</p>
 
 <ul>
-<li>
-<code>fetchData()</code><br>
+<li><p><code>fetchData()</code><br>
 Fetches weather data from the Yahoo Weather API and populates the data access
 objects accordingly.<br>
-This method must be called at least once before using any
-of the methods listed below.</li>
-<li>
-<code>getLocation()</code><br>
-Returns a <code>Data\Location</code> object holding the location of this forecast.</li>
-<li>
-<code>getUnits()</code><br>
-Returns a <code>Data\Units</code> object holding units for various aspects of the forecast.</li>
-<li>
-<code>getWind()</code><br>
-Returns a <code>Data\Wind</code> object holding forecast information about wind.</li>
-<li>
-<code>getAtmosphere()</code><br>
+This method must be called at least once before using any of the methods listed
+below.</p></li>
+<li><p><code>getLocation()</code><br>
+Returns a <code>Data\Location</code> object holding the location of this forecast.</p></li>
+<li><p><code>getUnits()</code><br>
+Returns a <code>Data\Units</code> object holding units for various aspects of the forecast.</p></li>
+<li><p><code>getWind()</code><br>
+Returns a <code>Data\Wind</code> object holding forecast information about wind.</p></li>
+<li><p><code>getAtmosphere()</code><br>
 Returns a <code>Data\Atmosphere</code> object holding forecast information about current
-atmospheric pressure, humidity, and visibility.</li>
-<li>
-<code>getAstronomy()</code><br>
+atmospheric pressure, humidity, and visibility.</p></li>
+<li><p><code>getAstronomy()</code><br>
 Returns a <code>Data\Astronomy</code> object holding forecast information about current
-astronomical conditions.</li>
-<li>
-<code>getCondition()</code><br>
-Returns a <code>Data\Condition</code> object holding the current weather conditions.</li>
-<li>
-<code>getForecast()</code><br>
+astronomical conditions.</p></li>
+<li><p><code>getCondition()</code><br>
+Returns a <code>Data\Condition</code> object holding the current weather conditions.</p></li>
+<li><p><code>getForecast()</code><br>
 Returns an array of <code>Data\Forecast</code> objects holding the weather forecast for a
-specific day.</li>
-</ul><h3>
-<a name="the-datalocation-object" class="anchor" href="#the-datalocation-object"><span class="octicon octicon-link"></span></a>The Data\Location object</h3>
+specific day.</p></li>
+</ul>
+
+<h3>
+<a id="the-datalocation-object" class="anchor" href="#the-datalocation-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Data\Location object</h3>
 
 <p>The <code>Data\Location</code> object represents location information of the forecast.</p>
 
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li>
-<code>getCity()</code><br>
-Returns the city name. (string)</li>
-<li>
-<code>getRegion()</code><br>
-Returns the state, territory, or region. (string)</li>
-<li>
-<code>getCountry()</code><br>
-Returns the country name. (string)</li>
-</ul><h3>
-<a name="the-dataunits-object" class="anchor" href="#the-dataunits-object"><span class="octicon octicon-link"></span></a>The Data\Units object</h3>
+<li><p><code>getCity()</code><br>
+Returns the city name. (string)</p></li>
+<li><p><code>getRegion()</code><br>
+Returns the state, territory, or region. (string)</p></li>
+<li><p><code>getCountry()</code><br>
+Returns the country name. (string)</p></li>
+</ul>
+
+<h3>
+<a id="the-dataunits-object" class="anchor" href="#the-dataunits-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Data\Units object</h3>
 
 <p>The <code>Data\Units</code> object represents units for various aspects of the forecast.</p>
 
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li>
-<code>getTemperature()</code><br>
-Returns the degree units for temperature. (string)</li>
-<li>
-<code>getDistance()</code><br>
-Returns the units for distance. (string)</li>
-<li>
-<code>getPressure()</code><br>
-Returns the units of barometric pressure. (string)</li>
-<li>
-<code>getSpeed()</code><br>
-Returns the units of speed. (string)</li>
-</ul><h3>
-<a name="the-datawind-object" class="anchor" href="#the-datawind-object"><span class="octicon octicon-link"></span></a>The Data\Wind object</h3>
+<li><p><code>getTemperature()</code><br>
+Returns the degree units for temperature. (string)</p></li>
+<li><p><code>getDistance()</code><br>
+Returns the units for distance. (string)</p></li>
+<li><p><code>getPressure()</code><br>
+Returns the units of barometric pressure. (string)</p></li>
+<li><p><code>getSpeed()</code><br>
+Returns the units of speed. (string)</p></li>
+</ul>
+
+<h3>
+<a id="the-datawind-object" class="anchor" href="#the-datawind-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Data\Wind object</h3>
 
 <p>The <code>Data\Wind</code> object represents forecast information about wind.</p>
 
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li>
-<code>getChill()</code><br>
-Returns the wind chill in degrees. (float)</li>
-<li>
-<code>getDirection()</code><br>
-Returns the wind direction, in degrees. (float)</li>
-<li>
-<code>getSpeed()</code><br>
-Returns the wind speed. (float)</li>
-</ul><h3>
-<a name="the-dataatmosphere-object" class="anchor" href="#the-dataatmosphere-object"><span class="octicon octicon-link"></span></a>The Data\Atmosphere object</h3>
+<li><p><code>getChill()</code><br>
+Returns the wind chill in degrees. (float)</p></li>
+<li><p><code>getDirection()</code><br>
+Returns the wind direction, in degrees. (float)</p></li>
+<li><p><code>getSpeed()</code><br>
+Returns the wind speed. (float)</p></li>
+</ul>
+
+<h3>
+<a id="the-dataatmosphere-object" class="anchor" href="#the-dataatmosphere-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Data\Atmosphere object</h3>
 
 <p>The <code>Data\Atmosphere</code> object represents forecast information about current
 atmospheric pressure, humidity, and visibility.</p>
@@ -247,21 +216,19 @@ atmospheric pressure, humidity, and visibility.</p>
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li>
-<code>getHumidity()</code><br>
-Returns the humidity in percent. (float)</li>
-<li>
-<code>getVisibility()</code><br>
-Returns the visibility. (float)</li>
-<li>
-<code>getPressure()</code><br>
-Returns the barometric pressure. (float)</li>
-<li>
-<code>getRising()</code><br>
-Returns the state of the barometric pressure: steady (0), rising (1), or falling (2). (int)<br>
-</li>
-</ul><h3>
-<a name="the-dataastronomy-object" class="anchor" href="#the-dataastronomy-object"><span class="octicon octicon-link"></span></a>The Data\Astronomy object</h3>
+<li><p><code>getHumidity()</code><br>
+Returns the humidity in percent. (float)</p></li>
+<li><p><code>getVisibility()</code><br>
+Returns the visibility. (float)</p></li>
+<li><p><code>getPressure()</code><br>
+Returns the barometric pressure. (float)</p></li>
+<li><p><code>getRising()</code><br>
+Returns the state of the barometric pressure: steady (0), rising (1),
+or falling (2). (int)  </p></li>
+</ul>
+
+<h3>
+<a id="the-dataastronomy-object" class="anchor" href="#the-dataastronomy-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Data\Astronomy object</h3>
 
 <p>The <code>Data\Astronomy</code> object represents forecast information about current
 astronomical conditions.</p>
@@ -269,130 +236,56 @@ astronomical conditions.</p>
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li>
-<code>getSunrise()</code><br>
-Returns today's sunrise time. (\DateTime)</li>
-<li>
-<code>getSunset()</code><br>
-Returns today's sunset time. (\DateTime)</li>
-</ul><h3>
-<a name="the-datacondition-object" class="anchor" href="#the-datacondition-object"><span class="octicon octicon-link"></span></a>The Data\Condition object</h3>
+<li><p><code>getSunrise()</code><br>
+Returns today's sunrise time. (\DateTime)</p></li>
+<li><p><code>getSunset()</code><br>
+Returns today's sunset time. (\DateTime)</p></li>
+</ul>
+
+<h3>
+<a id="the-datacondition-object" class="anchor" href="#the-datacondition-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Data\Condition object</h3>
 
 <p>The <code>Data\Condition</code> object represents the current weather conditions.</p>
 
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li>
-<code>getText()</code><br>
-Returns the textual description of conditions. (string)</li>
-<li>
-<code>getCode()</code><br>
+<li><p><code>getText()</code><br>
+Returns the textual description of conditions. (string)</p></li>
+<li><p><code>getCode()</code><br>
 Returns the condition code for this forecast. You could use this code to choose
 a text description or image for the forecast.<br>
-The possible values for this element are described in
-<a href="http://developer.yahoo.com/weather/#codes">Condition Codes</a>. (int)</li>
-<li>
-<code>getTemperature()</code><br>
-Returns the current temperature. (float)</li>
-<li>
-<code>getDate()</code><br>
-Returns the current date and time for which this forecast applies. (\DateTime)</li>
-</ul><h3>
-<a name="the-dataforecast-object" class="anchor" href="#the-dataforecast-object"><span class="octicon octicon-link"></span></a>The Data\Forecast object</h3>
+The possible values for this element are described in <a href="https://developer.yahoo.com/weather/documentation.html#codes">Condition Codes</a>. (int)</p></li>
+<li><p><code>getTemperature()</code><br>
+Returns the current temperature. (float)</p></li>
+<li><p><code>getDate()</code><br>
+Returns the current date and time for which this forecast applies. (\DateTime)</p></li>
+</ul>
+
+<h3>
+<a id="the-dataforecast-object" class="anchor" href="#the-dataforecast-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Data\Forecast object</h3>
 
 <p>The <code>Data\Forecast</code> object represents the weather forecast for a specific day.</p>
 
 <p>The following public methods for retrieving data are available:</p>
 
 <ul>
-<li>
-<code>getDate()</code><br>
-Returns the date to which this forecast applies. (\DateTime)</li>
-<li>
-<code>getLow()</code><br>
-Returns the forecasted low temperature for this day. (float)</li>
-<li>
-<code>getHigh()</code><br>
-Returns the forecasted high temperature for this day. (float)</li>
-<li>
-<code>getText()</code><br>
-Returns the textual description of conditions. (string)</li>
-<li>
-<code>getCode()</code><br>
+<li><p><code>getDate()</code><br>
+Returns the date to which this forecast applies. (\DateTime)</p></li>
+<li><p><code>getLow()</code><br>
+Returns the forecasted low temperature for this day. (float)</p></li>
+<li><p><code>getHigh()</code><br>
+Returns the forecasted high temperature for this day. (float)</p></li>
+<li><p><code>getText()</code><br>
+Returns the textual description of conditions. (string)</p></li>
+<li><p><code>getCode()</code><br>
 Returns the condition code for this forecast. You could use this code to choose
 a text description or image for the forecast.<br>
-The possible values for this element are described in
-<a href="http://developer.yahoo.com/weather/#codes">Condition Codes</a>. (int)</li>
-</ul><h2>
-<a name="finding-your-woeid" class="anchor" href="#finding-your-woeid"><span class="octicon octicon-link"></span></a>Finding your WOEID</h2>
-
-<p>To find your WOEID, browse or search for your city from the <a href="http://weather.yahoo.com/">Yahoo! Weather home page</a>. The WOEID is in the URL for the forecast page for
-that city. You can also get the WOEID by entering your zip code on the home page.</p>
-
-<p>For example, if you search for <em>Cologne</em> on the Weather home page, the forecast page
-for that city is:</p>
-
-<pre><code>http://weather.yahoo.com/germany/north-rhine-westphalia/cologne-667931/
-</code></pre>
-
-<p>The WOEID is 667931.</p>
+The possible values for this element are described in <a href="https://developer.yahoo.com/weather/documentation.html#codes">Condition Codes</a>. (int)</p></li>
+</ul>
 
 <h2>
-<a name="as-a-dependency-on-your-component" class="anchor" href="#as-a-dependency-on-your-component"><span class="octicon octicon-link"></span></a>As A Dependency On Your Component</h2>
-
-<p>If you are creating a component that relies on PHP_Weather, please make sure that
-you add PHP_Weather to your component's package.xml file:</p>
-
-<div class="highlight highlight-xml"><pre><span class="nt">&lt;dependencies&gt;</span>
-  <span class="nt">&lt;required&gt;</span>
-    <span class="nt">&lt;package&gt;</span>
-      <span class="nt">&lt;name&gt;</span>PHP_Weather<span class="nt">&lt;/name&gt;</span>
-      <span class="nt">&lt;channel&gt;</span>pear.random-host.com<span class="nt">&lt;/channel&gt;</span>
-      <span class="nt">&lt;min&gt;</span>1.0.0<span class="nt">&lt;/min&gt;</span>
-      <span class="nt">&lt;max&gt;</span>1.999.9999<span class="nt">&lt;/max&gt;</span>
-    <span class="nt">&lt;/package&gt;</span>
-  <span class="nt">&lt;/required&gt;</span>
-<span class="nt">&lt;/dependencies&gt;</span>
-</pre></div>
-
-<h2>
-<a name="development-environment" class="anchor" href="#development-environment"><span class="octicon octicon-link"></span></a>Development Environment</h2>
-
-<p>If you want to patch or enhance this component, you will need to create a
-suitable development environment. The easiest way to do that is to install
-phix4componentdev:</p>
-
-<pre><code># phix4componentdev
-sudo apt-get install php5-xdebug
-sudo apt-get install php5-imagick
-sudo pear channel-discover pear.phix-project.org
-sudo pear -D auto_discover=1 install -Ba phix/phix4componentdev
-</code></pre>
-
-<p>You can then clone the git repository:</p>
-
-<pre><code># PHP_Webcam_Overlay
-git clone https://github.com/Random-Host/PHP_Weather.git
-</code></pre>
-
-<p>Then, install a local copy of this component's dependencies to complete the
-development environment:</p>
-
-<pre><code># build vendor/ folder
-phing build-vendor
-</code></pre>
-
-<p>To make life easier for you, common tasks (such as running unit tests,
-generating code review analytics, and creating the PEAR package) have been
-automated using <a href="http://phing.info">phing</a>.  You'll find the automated steps
-inside the build.xml file that ships with the component.</p>
-
-<p>Run the command 'phing' in the component's top-level folder to see the full list
-of available automated tasks.</p>
-
-<h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
 <p>See LICENSE.txt for full license details.</p>
       </section>
@@ -401,8 +294,8 @@ of available automated tasks.</p>
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">PHP_Weather maintained by <a href="https://github.com/Random-Host">Random-Host</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        <p class="copyright">randomhost/weather maintained by <a href="https://github.com/randomhost">randomhost</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
 
