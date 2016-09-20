@@ -7,7 +7,6 @@
     <meta name="description" content="randomhost/weather : Encapsulates functions for easy retrieval of weather data from the Yahoo Weather API.">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/custom.css">
 
     <title>randomhost/weather</title>
   </head>
@@ -18,8 +17,6 @@
     <div id="header_wrap" class="outer">
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/randomhost/weather">View on GitHub</a>
-
-          <img id="project_logo" src="images/phpweather.png">
 
           <h1 id="project_title">randomhost/weather</h1>
           <h2 id="project_tagline">Encapsulates functions for easy retrieval of weather data from the Yahoo Weather API.</h2>
@@ -72,8 +69,7 @@ temperature and humidity.</p>
 <p>Assuming that you named this file <code>weather.php</code>, you should now be able to
 access the weather data at <code>http://example.com/weather.php</code></p>
 
-<p>A more detailed example can be found in <code>src/www/weather/index.php</code> which will
-also be installed to your PEAR www directory (usually <code>/usr/share/php/htdocs</code>).</p>
+<p>A more detailed example can be found in <code>src/www/weather/index.php</code>.</p>
 
 <h3>
 <a id="the-feed-object" class="anchor" href="#the-feed-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Feed object</h3>
@@ -99,8 +95,8 @@ Feed URL for retrieving weather data from Yahoo Weather API.</p></li>
 <p>If a <code>$locationName</code> is given, <code>Feed::fetchData()</code> will be called implicitly
 which will automatically retrieve weather data for the given location ID and
 populate the data access objects accordingly.<br>
-If you do not want this, you can omit <code>$locationName</code> or set it to `<code>(empty
-string) and configure the location name yourself using</code>Feed::setLocationName()`.</p>
+If you do not want this, you can omit <code>$locationName</code> or set it to <code>''</code> (an empty
+string) and configure the location name yourself using <code>Feed::setLocationName()</code>.</p>
 
 <p>The <code>$systemOfUnits</code> parameter can be used to determine the system of units to
 be used by the weather feed. If not given or set to <code>''</code> (an empty string), it
@@ -302,7 +298,7 @@ The possible values for this element are described in <a href="https://developer
       </footer>
     </div>
 
-
+    
 
   </body>
 </html>
