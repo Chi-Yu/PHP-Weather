@@ -157,6 +157,10 @@ Returns a <code>Data\Condition</code> object holding the current weather conditi
 <li><p><code>getForecast()</code><br>
 Returns an array of <code>Data\Forecast</code> objects holding the weather forecast for a
 specific day.</p></li>
+<li><p><code>getTitle()</code><br>
+Returns the title for the weather data as returned by Yahoo.</p></li>
+<li><p><code>getLink()</code><br>
+Returns the link for linking weather data back to Yahoo.</p></li>
 </ul>
 
 <h3>
@@ -285,6 +289,13 @@ Returns the condition code for this forecast. You could use this code to choose
 a text description or image for the forecast.<br>
 The possible values for this element are described in <a href="https://developer.yahoo.com/weather/documentation.html#codes">Condition Codes</a>. (int)</p></li>
 </ul>
+
+<h2>
+<a id="attribution-guidelines" class="anchor" href="#attribution-guidelines" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribution Guidelines</h2>
+
+<p>Please note that you are required to link back to Yahoo using the link URL
+provided by <code>Feed::getLink()</code> and one of the logos Yahoo provides. Please refer
+to Yahoo's <a href="https://developer.yahoo.com/attribution/">Attribution Guidelines for Yahoo APIs</a> for details.</p>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
